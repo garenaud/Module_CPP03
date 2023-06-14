@@ -6,7 +6,7 @@
 /*   By: grenaud- <grenaud-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 13:58:53 by grenaud-          #+#    #+#             */
-/*   Updated: 2023/06/13 17:37:40 by grenaud-         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:48:14 by grenaud-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,19 @@ void	ScavTrap::guardGate()
 		return;
 	}
 	std::cout << "ScavTrap " << this->_name << " is in Gate Keeper mode"  << std::endl;
+}
+
+int		ScavTrap::getHit()
+{
+	return(100);
+}
+
+int		ScavTrap::getEnergy()
+{
+	return(50);
+}
+
+int		ScavTrap::getAttack()
+{
+	return(20);
 }

@@ -6,25 +6,18 @@
 /*   By: grenaud- <grenaud-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 10:58:27 by grenaud-          #+#    #+#             */
-/*   Updated: 2023/06/13 17:38:48 by grenaud-         ###   ########.fr       */
+/*   Updated: 2023/06/13 18:01:04 by grenaud-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int		main()
 {
-	ScavTrap Bob("bob");
-	ScavTrap Jim;
-	Bob.attack("42");
-	Bob.takeDamage(20);
-	Jim = Bob;
-	Bob.beRepaired(3);
-	Bob.takeDamage(6);
-	Bob.takeDamage(3);
-	Bob.takeDamage(5);
-	Bob.beRepaired(8);
-	Jim.takeDamage(1);
-	Bob.guardGate();
+	DiamondTrap d;
+	d.attack("poutine");
+	
 	return (0);
 }

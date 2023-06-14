@@ -6,7 +6,7 @@
 /*   By: grenaud- <grenaud-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 10:58:27 by grenaud-          #+#    #+#             */
-/*   Updated: 2023/06/13 16:22:05 by grenaud-         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:34:13 by grenaud-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int		main()
 	ClapTrap jim;
 	Bob.attack("42");
 	Bob.takeDamage(6);
+	jim = Bob;
 	Bob.beRepaired(3);
 	Bob.takeDamage(6);
 	Bob.takeDamage(3);

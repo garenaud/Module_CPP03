@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: grenaud- <grenaud-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/13 10:58:27 by grenaud-          #+#    #+#             */
-/*   Updated: 2023/06/13 17:38:48 by grenaud-         ###   ########.fr       */
+/*   Created: 2023/06/13 16:25:41 by grenaud-          #+#    #+#             */
+/*   Updated: 2023/06/13 17:46:48 by grenaud-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
+# include "ClapTrap.hpp"
+# include <iostream>
 
-int		main()
+class FragTrap : public ClapTrap
 {
-	ScavTrap Bob("bob");
-	ScavTrap Jim;
-	Bob.attack("42");
-	Bob.takeDamage(20);
-	Jim = Bob;
-	Bob.beRepaired(3);
-	Bob.takeDamage(6);
-	Bob.takeDamage(3);
-	Bob.takeDamage(5);
-	Bob.beRepaired(8);
-	Jim.takeDamage(1);
-	Bob.guardGate();
-	return (0);
-}
+	public:
+		FragTrap();
+		FragTrap(std::string name);
+		~FragTrap();
+		FragTrap &operator=(const FragTrap &rhs);
+
+		void	attack(const std::string &target);
+		void	highFivesGuys(void);
+		int		getHit(void);
+		int		getEnergy(void);
+		int		getAttack(void);
+};
+
+#endif
