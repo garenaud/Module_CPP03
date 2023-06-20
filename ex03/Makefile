@@ -6,34 +6,29 @@
 #    By: grenaud- <grenaud-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/13 11:00:00 by grenaud-          #+#    #+#              #
-#    Updated: 2023/06/13 16:43:19 by grenaud-         ###   ########.fr        #
+#    Updated: 2023/06/20 15:08:39 by grenaud-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME  = DiamondTrap
-
 SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
-HEADER = ScavTrap.hpp ClapTrap.hpp FragTrap.hpp DiamondTrap.hpp
-OBJS = $(SRC:.cpp=.o)
-
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -O3
+OBJ = $(SRC:.cpp=.o)
 CC = c++
-RM = rm -rf
+RM = rm -f
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic -Wshadow
+
+NAME = claptrap
 
 all: $(NAME)
 
-%.o: %.cpp $(HEADER)
-	$(CC) $(CXXFLAGS) -o $(@) -c $(<)
-
-$(NAME): $(OBJS)
-	$(CC) $(CXXFLAGS) -o $(@) $(^)
+$(NAME): $(OBJ)
+	$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJ)
 
 fclean: clean
 	$(RM) $(NAME)
 
-re: fclean all
+re: fclean $(NAME)
 
 .PHONY: all clean fclean re
