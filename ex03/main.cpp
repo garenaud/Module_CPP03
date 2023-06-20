@@ -6,18 +6,20 @@
 /*   By: grenaud- <grenaud-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 10:58:27 by grenaud-          #+#    #+#             */
-/*   Updated: 2023/06/13 18:01:04 by grenaud-         ###   ########.fr       */
+/*   Updated: 2023/06/20 19:07:26 by grenaud-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
 #include "DiamondTrap.hpp"
 
-int		main()
+
+int	main(void)
 {
-	DiamondTrap d;
-	d.attack("poutine");
-	
-	return (0);
+	DiamondTrap Alice("Alice");
+	Alice.attack("42");
+	Alice.takeDamage(30);
+	Alice.beRepaired(20);
+	Alice.highFivesGuys();
+	Alice.guardGate();
+	Alice.whoAmI();
 }

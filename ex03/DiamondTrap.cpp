@@ -6,50 +6,65 @@
 /*   By: grenaud- <grenaud-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:54:11 by grenaud-          #+#    #+#             */
-/*   Updated: 2023/06/14 13:51:36 by grenaud-         ###   ########.fr       */
+/*   Updated: 2023/06/20 18:56:02 by grenaud-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
-#include "ClapTrap.hpp"
-#include "FragTrap.hpp"
-#include "ScavTrap.hpp"
 
-DiamondTrap::DiamondTrap(): ScavTrap(), FragTrap()
+DiamondTrap::DiamondTrap(void)
 {
-	_name = "Default";
-	this->ClapTrap::_name = this->_name + "_clap_name";
-	this->_hitPts = this->FragTrap::getHit();
-	this->_energyPts = this->ScavTrap::getEnergy();
-	this->_attackDmg = this->FragTrap::getAttack();
-	std::cout << "\033[102mDefault constructor DiamondTrap created\033[0m" << std::endl;
+	this->_name = "default";
+	std::cout << this->_energyPts << std::endl;
+	this->ClapTrap::_name = _name + "_clap_name";
+	this->_hitPts = FragTrap::_defHitPts;
+	this->_energyPts = ScavTrap::_defEnergyPts;
+	//this->_energyPts = Scav.get_energy_points();
+	this->_attackDmg = FragTrap::_defAttackDmg;
+	std::cout << "\033[102mDiamondTrap " << this->_name << " created with default constructor.\033[0m" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string name)
-{
-/* 	this->_name = name;
-	this->ClapTrap::_name = this->_name + "_clap_name";
-	this->_hitPts = this->FragTrap::getHit();
-	this->_energyPts = this->ScavTrap::getEnergy();
-	this->_attackDmg = this->FragTrap::getAttack();
-	std::cout << "\033[102mDiamondTrap " << this->_name << " created\033[0m with \033[32m" 
-		<< this->_energyPts << " energy points \033[0mand \033[34m" << this->_hitPts 
-		<< " hit points\033[0m" << std::endl; */
+DiamondTrap::DiamondTrap(std::string const &name): ScavTrap(), FragTrap() 
+{	
+	this->_name = name;
+	this->ClapTrap::_name = name + "_clap_name";
+	this->_hitPts = FragTrap::_defHitPts;
+	this->_energyPts = ScavTrap::_defEnergyPts;
+	this->_attackDmg = FragTrap::_attackDmg;
+	std::cout << "\033[102mDiamondTrap " << this->_name << " created with " 
+		<< _hitPts << " Hit Points, " << _energyPts << " Energy Points and "
+		<< _attackDmg << " Attack Damage.\033[0m" << std::endl;
 }
 
-DiamondTrap::~DiamondTrap()
+DiamondTrap::~DiamondTrap(void)
 {
-	std::cout << "\033[102mDiamondTrap destructor called\033[0m" << std::endl;
+	std::cout << "\033[102mDiamondTrap " << this->_name << " destroyed.\033[0m" << std::endl;
 }
 
-void	DiamondTrap::attack(const std::string &target)
+/* DiamondTrap::DiamondTrap(DiamondTrap const &copy): ScavTrap(copy), FragTrap(copy)
 {
-/* 	if (this->_energyPts <= 0 || this->_hitPts <= 0)
+	std::cout << "DiamondTrap " << this->_name << " copied." << std::endl;
+} */
+
+DiamondTrap	&DiamondTrap::operator=(DiamondTrap const &copy)
+{
+	std::cout << "Assignment operator for DiamondTrap called." << std::endl;
+	FragTrap::operator=(copy);
+	return (*this);
+}
+
+void	DiamondTrap::whoAmI(void)
+{
+	if (this->_hitPts <= 0)
+		std::cout << "Cannot run whoAmI because: DiamondTrap " << this->_name << " is dead." << std::endl;
+	else
 	{
-		std::cout << "\033[35mDiamondTrap " << this->_name << " has not enough energy to attack\033[0m" << std::endl;
-		return;
+		std::cout << "DiamondTrap name: " << this->_name << "." << std::endl;
+		std::cout << "ClapTrap name: " << ClapTrap::_name << "." << std::endl;
 	}
-	this->_hitPts -= 1;
-	std::cout << "DiamondTrap " << this->_name << " attacks " << target << ", causing \033[1;31m" 
-		<< this->_attackDmg << " points of damage!\033[0m" << std::endl;
- */}
+}
+
+void	DiamondTrap::attack(std::string const &target)
+{
+	ScavTrap::attack(target);
+}

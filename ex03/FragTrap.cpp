@@ -6,7 +6,7 @@
 /*   By: grenaud- <grenaud-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:25:30 by grenaud-          #+#    #+#             */
-/*   Updated: 2023/06/13 17:46:15 by grenaud-         ###   ########.fr       */
+/*   Updated: 2023/06/20 18:49:31 by grenaud-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ FragTrap::FragTrap()
 	this->_hitPts = 100;
 	this->_energyPts = 100;
 	this->_attackDmg = 30;
-	std::cout << "\033[106mDefault constructor FragTrap created\033[0m" << std::endl;
+	std::cout << "\033[106mDefault constructor FragTrap created with " 
+		<< _hitPts << " Hit Pts, " << _energyPts << " Energy Pts and "
+		<< _attackDmg << " Attack Dammage.\033[0m" << std::endl;
 }
 
 FragTrap::FragTrap(std::string name)
@@ -49,16 +51,19 @@ FragTrap::~FragTrap()
 	std::cout << "\033[106mFragTrap destructor called\033[0m" << std::endl;
 }
 
-void	FragTrap::attack(const std::string &target)
+int const	&FragTrap::get_hp(void) const
 {
-	if (this->_energyPts <= 0 || this->_hitPts <= 0)
-	{
-		std::cout << "\033[35mFragTrap " << this->_name << " has not enough energy to attack\033[0m" << std::endl;
-		return;
-	}
-	this->_hitPts -= 1;
-	std::cout << "FragTrap " << this->_name << " attacks " << target << ", causing \033[1;31m" 
-		<< this->_attackDmg << " points of damage!\033[0m" << std::endl;
+	return (this->_hitPts);
+}
+
+int const	&FragTrap::get_energy_points(void) const
+{
+	return (this->_energyPts);
+}
+
+int const	&FragTrap::get_damage(void) const
+{
+	return (this->_attackDmg);
 }
 
 void	FragTrap::highFivesGuys()
@@ -69,19 +74,4 @@ void	FragTrap::highFivesGuys()
 		return;
 	}
 	std::cout << "FragTrap " << this->_name << ": High fives guys!"  << std::endl;
-}
-
-int		FragTrap::getHit()
-{
-	return(100);
-}
-
-int		FragTrap::getEnergy()
-{
-	return(100);
-}
-
-int		FragTrap::getAttack()
-{
-	return(30);
 }

@@ -6,7 +6,7 @@
 /*   By: grenaud- <grenaud-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:25:41 by grenaud-          #+#    #+#             */
-/*   Updated: 2023/06/13 17:46:48 by grenaud-         ###   ########.fr       */
+/*   Updated: 2023/06/20 18:50:04 by grenaud-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,24 @@
 # include "ClapTrap.hpp"
 # include <iostream>
 
-class FragTrap : public ClapTrap
+class FragTrap : virtual public ClapTrap
 {
+	protected:
+		static const int			_defHitPts = 100;
+		static const int			_defEnergyPts = 100;
+		static const int			_defAttackDmg = 30;
+		
 	public:
 		FragTrap();
 		FragTrap(std::string name);
 		~FragTrap();
 		FragTrap &operator=(const FragTrap &rhs);
 
-		void	attack(const std::string &target);
+		int const	&get_hp(void) const;
+		int const	&get_energy_points(void) const;
+		int const	&get_damage(void) const;
+
 		void	highFivesGuys(void);
-		int		getHit(void);
-		int		getEnergy(void);
-		int		getAttack(void);
 };
 
 #endif

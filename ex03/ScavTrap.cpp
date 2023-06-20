@@ -6,7 +6,7 @@
 /*   By: grenaud- <grenaud-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 13:58:53 by grenaud-          #+#    #+#             */
-/*   Updated: 2023/06/13 17:48:14 by grenaud-         ###   ########.fr       */
+/*   Updated: 2023/06/20 19:02:55 by grenaud-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ ScavTrap::ScavTrap()
 	this->_hitPts = 100;
 	this->_energyPts = 50;
 	this->_attackDmg = 20;
-	std::cout << "\033[44mDefault constructor ScavTrap created\033[0m" << std::endl;
+	std::cout << "\033[44mDefault constructor ScavTrap created with " 
+		<< _hitPts << " Hit Pts, " << _energyPts << " Energy Pts and "
+		<< _attackDmg << " Attack Dammage.\033[0m" << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name)
@@ -49,16 +51,19 @@ ScavTrap::~ScavTrap()
 	std::cout << "\033[44mScavTrap destructor called\033[0m" << std::endl;
 }
 
-void	ScavTrap::attack(const std::string &target)
+int const	&ScavTrap::get_hp(void) const
 {
-	if (this->_energyPts <= 0 || this->_hitPts <= 0)
-	{
-		std::cout << "\033[35mScavTrap " << this->_name << " has not enough energy to attack\033[0m" << std::endl;
-		return;
-	}
-	this->_hitPts -= 1;
-	std::cout << "ScavTrap " << this->_name << " attacks " << target << ", causing \033[1;31m" 
-		<< this->_attackDmg << " points of damage!\033[0m" << std::endl;
+	return (this->_hitPts);
+}
+
+int const	&ScavTrap::get_energy_points(void) const
+{
+	return (this->_energyPts);
+}
+
+int const	&ScavTrap::get_damage(void) const
+{
+	return (this->_attackDmg);
 }
 
 void	ScavTrap::guardGate()
@@ -71,17 +76,14 @@ void	ScavTrap::guardGate()
 	std::cout << "ScavTrap " << this->_name << " is in Gate Keeper mode"  << std::endl;
 }
 
-int		ScavTrap::getHit()
+void	ScavTrap::attack(const std::string &target)
 {
-	return(100);
-}
-
-int		ScavTrap::getEnergy()
-{
-	return(50);
-}
-
-int		ScavTrap::getAttack()
-{
-	return(20);
+	if (this->_energyPts <= 0 || this->_hitPts <= 0)
+	{
+		std::cout << "\033[35mScavTrap " << this->_name << " has not enough energy to attack\033[0m" << std::endl;
+		return;
+	}
+	this->_hitPts -= 1;
+	std::cout << "ScavTrap " << this->_name << " attacks " << target << ", causing \033[1;31m" 
+		<< this->_attackDmg << " points of damage!\033[0m" << std::endl;
 }
