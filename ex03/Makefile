@@ -6,7 +6,7 @@
 #    By: grenaud- <grenaud-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/13 11:00:00 by grenaud-          #+#    #+#              #
-#    Updated: 2023/06/20 15:08:39 by grenaud-         ###   ########.fr        #
+#    Updated: 2023/06/20 17:26:03 by grenaud-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = c++
 RM = rm -f
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic -Wshadow
 
-NAME = claptrap
+NAME = DiamondTrap
 
 all: $(NAME)
 
