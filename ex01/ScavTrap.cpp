@@ -6,7 +6,7 @@
 /*   By: grenaud- <grenaud-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 13:58:53 by grenaud-          #+#    #+#             */
-/*   Updated: 2023/06/13 17:37:40 by grenaud-         ###   ########.fr       */
+/*   Updated: 2023/06/20 20:46:11 by grenaud-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 ScavTrap::ScavTrap()
 {
+	this->_name = "default";
 	this->_hitPts = 100;
 	this->_energyPts = 50;
 	this->_attackDmg = 20;
